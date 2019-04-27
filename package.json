@@ -1,0 +1,19 @@
+{
+  "name": "rspeer",
+  "version": "1.0.0",
+  "description": "rspeer bot",
+  "main": "",
+  "dependencies": {},
+  "devDependencies": {
+    "@bazel/bazel": "^0.24.1",
+    "@bazel/buildifier": "^0.22.0",
+    "@bazel/ibazel": "^0.10.1",
+    "uglify-js": "^3.5.4"
+  },
+  "scripts": {
+    "build": "bazel run //web:elm_container_image",
+    "host": "docker run -p 8000:80 bazel/web:elm_container_image"
+  },
+  "author": "dmattia",
+  "license": "MIT"
+}

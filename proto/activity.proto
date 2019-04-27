@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ajorah.rspeer";
+option java_outer_classname = "RspeerProto";
+
+package rspeer;
+
+message ToggleRunRequest {
+  bool should_run = 1;
+}
+
+message ToggleRunResponse {
+  bool success = 1;
+}
+
+message GetRunEnergyRequest {
+}
+
+message GetRunEnergyResponse {
+  int32 run_energy = 1;
+}
+
+message WalkToResponse {
+  bool success = 1;
+}
+
+message WorldPosition {
+  int32 world_x = 1;
+  int32 world_y = 2;
+  int32 floor_level = 3;
+}
+
+message IsRunEnabledRequest {
+}
+
+message IsRunEnabledResponse {
+  bool is_enabled = 1;
+}
+
+service MovementService {
+  rpc ToggleRun (ToggleRunRequest) returns (ToggleRunResponse);
+  rpc GetRunEnergy (GetRunEnergyRequest) returns (GetRunEnergyResponse);
+  rpc WalkTo (WorldPosition) returns (WalkToResponse);
+  rpc IsRunEnabled (IsRunEnabledRequest) returns (IsRunEnabledResponse);
+}
+
+// TODO: Move to its own file
+// https://rspeer.nyc3.cdn.digitaloceanspaces.com/front-site/javadocs/org/rspeer/runetek/adapter/scene/Player.html
+message AjorahPlayer {
+  string name = 1;
+  WorldPosition position = 2;
+  bool is_moving = 3;
+}
+
+message GetLocalRequest {
+}
+
+service PlayersService {
+  rpc GetLocal(GetLocalRequest) returns (AjorahPlayer);
+}

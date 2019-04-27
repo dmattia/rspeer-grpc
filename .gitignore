@@ -1,0 +1,29 @@
+# Bazel outputs
+bazel-bazel-test
+bazel-bin
+bazel-dev
+bazel-genfiles
+bazel-out
+bazel-testlogs
+
+# NPM schtuff
+package-lock.json
+node_modules
+
+# Markdown file with my todo list
+notes
+
+# Main binary for rspeer
+rspeer.jar
+
+# For firebase connection
+serviceAccountKey.json
+
+# code I don't really want to share
+src/
+test/
+link*.sh
+.idea
+
+# junk
+*.sw[op]

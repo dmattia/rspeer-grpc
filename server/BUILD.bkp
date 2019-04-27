@@ -1,0 +1,54 @@
+#java_library(
+#    name = "MovementImpl",
+#    srcs = ["MovementImpl.java"],
+#    deps = [
+#        "//proto:activity_java_library",
+#    ],
+#    exports = [
+#        "//proto:activity_java_library",
+#    ],
+#)
+#
+#java_library(
+#    name = "ListenServer",
+#    srcs = ["ListenServer.java"],
+#    deps = [
+#        ":MovementImpl",
+#        "@io_grpc_grpc_java//core",
+#        "@io_grpc_grpc_java//stub",
+#        "@io_grpc_grpc_java//netty",
+#    ],
+#    exports = [
+#        ":MovementImpl",
+#        "@io_grpc_grpc_java//core",
+#        "@io_grpc_grpc_java//stub",
+#        "@io_grpc_grpc_java//netty",
+#    ],
+#)
+#
+#java_library(
+#    name = "ListenScript",
+#    srcs = ["ListenScript.java"],
+#    deps = [
+#        ":ListenServer",
+#        "//:rspeer",
+#    ],
+#)
+#
+#java_binary(
+#    name = "Main",
+#    runtime_deps = [":ListenScript"],
+#    create_executable = 0,
+#)
+
+java_library(
+    name = "Script",
+    srcs = glob(["**/*.java"]),
+    deps = [
+        "//:rspeer",
+        #"@io_grpc_grpc_java//core",
+        #"@io_grpc_grpc_java//stub",
+        #"@io_grpc_grpc_java//netty",
+        "//proto:activity_java_library",
+    ],
+)
